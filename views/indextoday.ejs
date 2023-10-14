@@ -1,0 +1,23 @@
+<%- include("partials/header.ejs") %>
+    <div class="container todo">
+      <div class="row todo-outterdiv">
+        <div class="col-10 todo-title">
+          <h4>WORK LIST</h4>
+        </div>
+        <div class="col-10 todo-listbox">
+          <% if(locals.data){ %>
+            <% for (var i=0; i<data.length; i++){ %>
+              <div class="listed">
+                <input class="item-checkbox" type="checkbox" name="item<%= i %>" id="<%= i %>">
+                <div class="todolist-items"><%= data[i].todos %></div>
+              </div> 
+            <% } %>
+          <% } %>
+          <form action="/todotoday" method="POST">
+            <input class="text-box" type="text" name="todoItem" placeholder="to do" />
+            <input class="add-btn" type="submit" value="add" />
+          </form>
+        </div>
+      </div>
+    </div>
+<%- include("partials/footer.ejs") %>
